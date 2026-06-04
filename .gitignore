@@ -1,6 +1,7 @@
 # CMake build artifacts
 build/
 .cmake/
+*.deb
 
 # HoloHub CLI tools (auto-downloaded by the holohub wrapper on first run)
 .holohub/
