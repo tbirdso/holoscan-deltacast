@@ -38,7 +38,10 @@ add_library(videomaster SHARED
 )
 add_library(holoscan::videomaster ALIAS videomaster)
 
-target_include_directories(videomaster INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(videomaster
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:include>)
 # Propagate the compile guard so consumers (#ifdef DELTACAST_VIDEOMASTER in main.cpp)
 # pick it up automatically when they link this target.
 target_compile_definitions(videomaster INTERFACE DELTACAST_VIDEOMASTER)
@@ -54,7 +57,15 @@ target_link_libraries(videomaster
 )
 
 install(TARGETS videomaster
+    EXPORT holoscan_deltacast_targets
     LIBRARY DESTINATION lib
+    COMPONENT runtime)
+
+install(FILES
+    videomaster_base.hpp
+    videomaster_source.hpp
+    videomaster_transmitter.hpp
+    DESTINATION include/holoscan/deltacast
     COMPONENT runtime)
 
 add_subdirectory(python)

@@ -18,6 +18,14 @@ configure_file(
 # Relative DESTINATION — interpreted as <CMAKE_INSTALL_PREFIX>/holoscan/<mod>
 # in plain `cmake --install` (set --prefix to ${Python3_SITEARCH}), and as
 # <wheel-root>/holoscan/<mod> when scikit-build-core builds the wheel.
+# Wheel build (scikit-build-core installs only COMPONENT wheel):
+# holoscan/deltacast/ lands at site-packages/holoscan/deltacast/
 install(DIRECTORY ${HOLOSCAN_DELTACAST_PYTHON_PKG_DIR}
     DESTINATION holoscan
+    COMPONENT wheel)
+
+# DEB package: python/lib/holoscan/deltacast/ under the CPack prefix
+# /opt/nvidia/holoscan → /opt/nvidia/holoscan/python/lib/holoscan/deltacast/
+install(DIRECTORY ${HOLOSCAN_DELTACAST_PYTHON_PKG_DIR}
+    DESTINATION python/lib/holoscan
     COMPONENT runtime)

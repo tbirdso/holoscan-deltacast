@@ -34,6 +34,7 @@ cmake.args = [
 # install(...) calls — scikit-build-core stages those into the wheel root.
 # Setting wheel.install-dir = "/" would require the experimental flag.
 wheel.packages = []
+wheel.cmake-install-components = ["wheel"]
 
 [tool.ruff]
 line-length = 100
