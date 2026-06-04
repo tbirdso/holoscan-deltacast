@@ -21,4 +21,5 @@ if(HOLOSCAN_DELTACAST_BUILD_TESTING)
 endif()
 
 install(FILES deltacast_transmitter.py deltacast_transmitter.yaml
-        DESTINATION bin/deltacast_transmitter/python)
+        DESTINATION bin/deltacast_transmitter/python
+        COMPONENT examples)

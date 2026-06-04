@@ -20,5 +20,5 @@ add_custom_target(deltacast_transmitter_yaml
 )
 add_dependencies(deltacast_transmitter deltacast_transmitter_yaml)
 
-install(TARGETS deltacast_transmitter DESTINATION bin/deltacast_transmitter/cpp)
-install(FILES deltacast_transmitter.yaml DESTINATION bin/deltacast_transmitter/cpp)
+install(TARGETS deltacast_transmitter DESTINATION bin/deltacast_transmitter/cpp COMPONENT examples)
+install(FILES deltacast_transmitter.yaml DESTINATION bin/deltacast_transmitter/cpp COMPONENT examples)

@@ -53,4 +53,8 @@ target_link_libraries(videomaster
     holoscan::core
 )
 
+install(TARGETS videomaster
+    LIBRARY DESTINATION lib
+    COMPONENT runtime)
+
 add_subdirectory(python)

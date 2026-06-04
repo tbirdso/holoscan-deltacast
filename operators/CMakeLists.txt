@@ -19,4 +19,5 @@ configure_file(
 # in plain `cmake --install` (set --prefix to ${Python3_SITEARCH}), and as
 # <wheel-root>/holoscan/<mod> when scikit-build-core builds the wheel.
 install(DIRECTORY ${HOLOSCAN_DELTACAST_PYTHON_PKG_DIR}
-    DESTINATION holoscan)
+    DESTINATION holoscan
+    COMPONENT runtime)

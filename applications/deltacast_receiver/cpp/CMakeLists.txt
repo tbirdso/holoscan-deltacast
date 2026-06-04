@@ -23,5 +23,5 @@ add_dependencies(deltacast_receiver
   endoscopy_data
 )
 
-install(TARGETS deltacast_receiver DESTINATION bin/deltacast_receiver/cpp)
-install(FILES deltacast_receiver.yaml DESTINATION bin/deltacast_receiver/cpp)
+install(TARGETS deltacast_receiver DESTINATION bin/deltacast_receiver/cpp COMPONENT examples)
+install(FILES deltacast_receiver.yaml DESTINATION bin/deltacast_receiver/cpp COMPONENT examples)

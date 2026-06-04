@@ -19,4 +19,5 @@ if(HOLOSCAN_DELTACAST_BUILD_TESTING)
 endif()
 
 install(FILES deltacast_receiver.py deltacast_receiver.yaml
-        DESTINATION bin/deltacast_receiver/python)
+        DESTINATION bin/deltacast_receiver/python
+        COMPONENT examples)

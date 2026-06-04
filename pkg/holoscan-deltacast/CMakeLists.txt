@@ -12,4 +12,5 @@ holohub_configure_deb(
     VENDOR      "Deltacast"
     CONTACT     "support@deltacast.tv"
     DEPENDS     "holoscan (>= 4.2.0)"
+    COMPONENTS  runtime
 )
