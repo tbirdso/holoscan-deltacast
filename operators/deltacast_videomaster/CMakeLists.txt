@@ -41,14 +41,23 @@ add_library(holoscan::videomaster ALIAS videomaster)
 target_include_directories(videomaster
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        # VideoMasterAPIHelper and VideoMasterHD headers are needed by the
+        # installed public headers; expose them at build time only.
+        # Downstream installs are expected to provide VideoMasterHD themselves.
+        $<BUILD_INTERFACE:$<TARGET_PROPERTY:VideoMasterAPIHelper,INTERFACE_INCLUDE_DIRECTORIES>>
+        $<BUILD_INTERFACE:$<TARGET_PROPERTY:VideoMasterHD::Core,INTERFACE_INCLUDE_DIRECTORIES>>
         $<INSTALL_INTERFACE:include>)
 # Propagate the compile guard so consumers (#ifdef DELTACAST_VIDEOMASTER in main.cpp)
 # pick it up automatically when they link this target.
 target_compile_definitions(videomaster INTERFACE DELTACAST_VIDEOMASTER)
 target_link_libraries(videomaster
-  PUBLIC
+  # VideoMasterAPIHelper and VideoMasterHD::Core are FetchContent/built targets;
+  # exporting them would require adding them to the export set. Since videomaster
+  # is a shared library they are already linked in, so PRIVATE is correct here.
+  PRIVATE
     VideoMasterAPIHelper
     VideoMasterHD::Core
+  PUBLIC
     CUDA::cudart
     CUDA::cuda_driver
     GXF::multimedia
